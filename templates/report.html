@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="{{url_for('static', filename = 'bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Html2Pdf  -->
+    <script src="{{url_for('static', filename = 'html2pdf.bundle.min.js')}}"></script>
+    <!--<script src="html2pdf.bundle.min.js">-->
+    </script>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        .line {
+            border-top-style: hidden;
+            border-right-style: hidden;
+            border-left-style: hidden;
+            border-bottom-style: groove;
+        }
+
+        input {
+            border: hidden;
+        }
+
+        input:focus {
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Form encrypted as text -->
+    <div id="form-print">
+        <br>
+        <h4 style="text-align: center;">Check Sheet Test Process Report</h4>
+        <br>
+        <Span style=" position: relative;left: 5%;"> Process : <input class="line" type="text"
+                placeholder="Enter Process"></Span>
+        <Span style=" position: relative;left: 5%;"> Model : <input class="line" type="text"
+                placeholder="Enter Model"></Span>
+        <Span style=" position: relative;left: 5%;"> Config : <input class="line" type="text"
+                placeholder="Enter Config"></Span>
+        <Span style=" position: relative;left: 5%;"> Reporter : <input class="line" type="text"
+                placeholder="Enter Reporter"></Span>
+        <br><br>
+        <Span style=" position: relative;left: 5%;"> Report Date : <input id="date" type="text"
+                placeholder="Enter Date"></Span>
+        <span style="position:relative;left: 50%;">TEST PART</span>
+        <form enctype="text/plain" class="form-control">
+
+            <br>
+            <table style="width:100%">
+                <tr style="background-color: dodgerblue; color:aliceblue;">
+                    <th style="width: 10%; text-align: center;font-weight: bolder;">Category</th>
+                    <th style="width: 30%;text-align: center;font-weight: bolder;">Checking Items</th>
+                    <th style="width: 5%;text-align: center;font-weight: bolder;">Result</th>
+                    <th>Remark</th>
+                </tr>
+                <tr>
+                    <td rowspan="8" style="font-weight: bolder;text-align: center;">SW</td>
+                    <td>Tester SW (Correct Ver? Latest?)</td>
+                    <td>
+                        <select>
+                            <option style="color: blue;">
+                                NA
+                            </option>
+                            <option style="color: red;">
+                                NG
+                            </option>
+                            <option style="color: green;">
+                                OK
+                            </option>
+                        </select>
+                    </td>
+                    <td>
+                        <span>Tester SW Ver: </span><input style="position:relative;width: 35%;" type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td>OP SW Ver</td>
+                    <td>
+                        <select>
+                            <option style="color: blue;">
+                                NA
+                            </option>
+                            <option style="color: red;">
+                                NG
+                            </option>
+                            <option style="color: green;">
+                                OK
+                            </option>
+                        </select>
+                    </td>
+                    <td><span>OP SW Ver: </span><input style="position:relative;width: 35%;"></td>
+                </tr>
+                <tr>
+                    <td>FPDC Server Ver</td>
+                    <td>
+                        <select>
+                            <option style="color: blue;">
+                                NA
+                            </option>
+                            <option style="color: red;">
+                                NG
+                            </option>
+                            <option style="color: green;">
+                                OK
+                            </option>
+                        </select>
+                    </td>
+                    <td><span>FPDC Ver: </span><input style="position:relative;width: 35%;"></td>
+                </tr>
+                <tr>
+                    <td>PBS Ver? Turn on?</td>
+                    <td>
+                        <select>
+                            <option style="color: blue;">
+                                NA
+                            </option>
+                            <option style="color: red;">
+                                NG
+                            </option>
+                            <option style="color: green;">
+                                OK
+                            </option>
+                        </select>
+                    </td>
+                    <td><span>PBS Ver: </span><input style="position:relative;width: 35%;"></td>
+                </tr>
+                <tr>
+                    <td>MTS Turn on?</td>
+                    <td>
+                        <select>
+                            <option style="color: blue;">
+                                NA
+                            </option>
+                            <option style="color: red;">
+                                NG
+                            </option>
+                            <option style="color: green;">
+                                OK
+                            </option>
+                        </select>
+                    </td>
+                    <td><span></span><input style="width: 35%;" type="text"></td>
+                </tr>
+                <tr>
+                    <td>SW Verification until DCR by 5 pcs?</td>
+                    <td>
+                        <select>
+                            <option style="color: blue;">
+                                NA
+                            </option>
+                            <option style="color: red;">
+                                NG
+                            </option>
+                            <option style="color: green;">
+                                OK
+                            </option>
+                        </select>
+                    </td>
+                    <td><input type="checkbox"><Span>UD Pass?---</Span><input type="checkbox"><Span>APS
+                            Pass?---</Span><input type="checkbox"><Span>DCR Pass?---</Span></td>
+                </tr>
+                <tr>
+                    <td>ERS?</td>
+                    <td>
+                        <select>
+                            <option style="color: blue;">
+                                NA
+                            </option>
+                            <option style="color: red;">
+                                NG
+                            </option>
+                            <option style="color: green;">
+                                OK
+                            </option>
+                        </select>
+                    </td>
+                    <td><Span>ERS Ver:</Span><input type="text" style="width: 35%;"></td>
+                </tr>
+                <tr>
+                    <td>VSR?</td>
+                    <td>
+                        <select>
+                            <option style="color: blue;">
+                                NA
+                            </option>
+                            <option style="color: red;">
+                                NG
+                            </option>
+                            <option style="color: green;">
+                                OK
+                            </option>
+                        </select>
+                    </td>
+                    <td><Span>VSR Ver:</Span><input type="text" style="width: 35%;"></td>
+                </tr>
+                <tr>
+                    <td rowspan="2" style="font-weight: bolder;text-align: center;">HW</td>
+                    <td>
+                        Light Cal, check particle, check connection
+                    </td>
+                    <td>
+                        <select>
+                            <option style="color: blue;">
+                                NA
+                            </option>
+                            <option style="color: red;">
+                                NG
+                            </option>
+                            <option style="color: green;">
+                                OK
+                            </option>
+                        </select>
+                    </td>
+                    <td><input type="checkbox"><Span>Light Cal?---</Span><input
+                            type="checkbox"><Span>Particle?---</Span><input type="checkbox"><Span>Check
+                            connection?---</Span></td>
+                </tr>
+                <tr>
+                    <td>
+                        Door Interlook
+                    </td>
+                    <td>
+                        <select>
+                            <option style="color: blue;">
+                                NA
+                            </option>
+                            <option style="color: red;">
+                                NG
+                            </option>
+                            <option style="color: green;">
+                                OK
+                            </option>
+                        </select>
+                    </td>
+                    <td><span> </span><input type="text" style="position:relative;width: 35%;"></td>
+                </tr>
+                <tr>
+                    <td rowspan="3" style="font-weight: bolder;text-align: center;">System</td>
+                    <td>
+                        Smart Factory
+                    </td>
+                    <td>
+                        <select>
+                            <option style="color: blue;">
+                                NA
+                            </option>
+                            <option style="color: red;">
+                                NG
+                            </option>
+                            <option style="color: green;">
+                                OK
+                            </option>
+                        </select>
+                    </td>
+
+                    <td><span> </span><input type="text" style="position:relative;width: 35%;"></td>
+                </tr>
+                <tr>
+                    <td>
+                        EPS Turn on
+                    </td>
+                    <td>
+                        <select>
+                            <option style="color: blue;">
+                                NA
+                            </option>
+                            <option style="color: red;">
+                                NG
+                            </option>
+                            <option style="color: green;">
+                                OK
+                            </option>
+                        </select>
+                    </td>
+                    <td><span> </span><input type="text" style="position:relative;width: 35%;"></td>
+                </tr>
+                <tr>
+                    <td>
+                        ECM turn on to prevent loss log data
+                    </td>
+                    <td>
+                        <select>
+                            <option style="color: blue;">
+                                NA
+                            </option>
+                            <option style="color: red;">
+                                NG
+                            </option>
+                            <option style="color: green;">
+                                OK
+                            </option>
+                        </select>
+                    </td>
+                    <td><span> </span><input type="text" style="position:relative;width: 35%;"></td>
+                </tr>
+            </table>
+        </form>
+
+    </div>
+    <input type="button" class="btn btn-primary" onclick="GeneratePdf();" value="Generate Report">
+
+    <script>
+        // Function to GeneratePdf
+        const d = new Date();
+        var weekday = new Array(7);
+        weekday[1] = "Monday";
+        weekday[2] = "Tuesday";
+        weekday[3] = "Wednesday";
+        weekday[4] = "Thursday";
+        weekday[5] = "Friday";
+        weekday[6] = "Saturday";
+        weekday[0] = "Sunday";
+        let day = d.getDate();
+        let month = d.getMonth() + 1;
+        let year = d.getFullYear();
+        let dayow = d.getDay();
+        document.getElementById("date").value = weekday[dayow] + " " + day + "/" + month + "/" + year;
+
+        function GeneratePdf() {
+            
+            var element = document.getElementById('form-print');
+            html2pdf(element, {
+                filename: 'report.pdf',
+                image: {
+                    type: "jpeg",
+                    quality: 0.95
+                },
+                html2canvas: {
+                    dpi: 300,
+                    letterRendering: true,
+                    useCORS: true
+                },
+                jsPDF: {
+                    unit: 'mm',
+                    orientation: 'p',
+                    format: [210, 297]
+                },
+            });
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
